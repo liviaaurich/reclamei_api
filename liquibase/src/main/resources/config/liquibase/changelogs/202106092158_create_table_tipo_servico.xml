@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="202106092158-1" author="livia.aurich">
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" sequenceName="seq_tipo_servico" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="202106092158-2" author="liviaaurich">
+        <createTable tableName="tipo_servico" remarks="Tabela responsável por armazenar os tipos de serviço.">
+            <column name="id" type="BIGINT" remarks="Chave primária da tabela tipo_servico">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)" remarks="Coluna que armazena o nome do tipo de serviço">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(511)" remarks="Coluna que armazena a descrição do tipo de serviço">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="tipo_servico" constraintName="tipo_servico_pk" columnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

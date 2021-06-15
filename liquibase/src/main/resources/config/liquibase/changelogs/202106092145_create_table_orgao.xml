@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="202106092145-1" author="livia.aurich">
+        <createSequence cacheSize="20" cycle="false" incrementBy="1" sequenceName="seq_orgao" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="202106092145-2" author="liviaaurich">
+        <createTable tableName="orgao" remarks="Tabela responsável por armazenar os orgãos.">
+            <column name="id" type="BIGINT" remarks="Chave primária da tabela orgao">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(255)" remarks="Coluna que armazena o nome do orgao">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(50)" remarks="Coluna que armazena o email da conta">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cnpj" type="VARCHAR(14)" remarks="Coluna que armazena o CNPJ do orgao">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(511)" remarks="Coluna que armazena a descrição do orgao">
+                <constraints nullable="false"/>
+            </column>
+            <column name="celular" type="VARCHAR(9)" remarks="Coluna que armazena o celular do orgao">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone_sac" type="VARCHAR(8)" remarks="Coluna que armazena o número de telefone do orgao">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="orgao" constraintName="orgao_pk" columnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

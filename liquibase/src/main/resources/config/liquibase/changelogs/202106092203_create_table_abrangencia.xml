@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="202106092203-1" author="liviaaurich">
+        <createTable tableName="abrangencia" remarks="Tabela responsável por armazenar as abrangências.">
+            <column name="id_orgao" type="BIGINT" remarks="Coluna que referencia a tabela orgao.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_cidade" type="BIGINT" remarks="Coluna que referencia a tabela cidade.">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_tipo_servico" type="BIGINT" remarks="Coluna que referencia a tabela tipo_servico.">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="abrangencia" constraintName="abrangencia_pk"
+                       columnNames="id_orgao, id_tipo_servico, id_cidade"/>
+        <addForeignKeyConstraint baseTableName="abrangencia" baseColumnNames="id_orgao"
+                                 constraintName="abrangencia_orgao_pk"
+                                 referencedTableName="orgao" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="abrangencia" baseColumnNames="id_tipo_servico"
+                                 constraintName="abrangencia_servico_pk"
+                                 referencedTableName="tipo_servico" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="abrangencia" baseColumnNames="id_cidade"
+                                 constraintName="abrangencia_cidade_pk"
+                                 referencedTableName="cidade" referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
