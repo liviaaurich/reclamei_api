@@ -17,21 +17,19 @@ public class AbrangenciaId implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (!(o instanceof AbrangenciaId)) {
-            return false;
-        }
-
-        AbrangenciaId that = (AbrangenciaId) o;
-
-        return new EqualsBuilder().append(getIdCidade(), that.getIdCidade()).append(getIdOrgao(), that.getIdOrgao()).append(getIdTipoServico(), that.getIdTipoServico()).isEquals();
+        return (o instanceof AbrangenciaId) && new EqualsBuilder()
+                .append(getIdCidade(), ((AbrangenciaId) o).getIdCidade())
+                .append(getIdOrgao(), ((AbrangenciaId) o).getIdOrgao())
+                .append(getIdTipoServico(), ((AbrangenciaId) o).getIdTipoServico())
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(getIdCidade()).append(getIdOrgao()).append(getIdTipoServico()).toHashCode();
+        return new HashCodeBuilder()
+                .append(getIdCidade())
+                .append(getIdOrgao())
+                .append(getIdTipoServico())
+                .toHashCode();
     }
 }

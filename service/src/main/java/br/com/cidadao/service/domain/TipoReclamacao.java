@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -25,7 +26,7 @@ public class TipoReclamacao {
     @Column(nullable = false)
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     private TipoServico tipoServico;
 
 }
