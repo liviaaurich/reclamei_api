@@ -43,6 +43,11 @@ spring:
       FAIL_ON_UNKNOWN_PROPERTIES: true
       FAIL_ON_IGNORED_PROPERTIES: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:keys/reclameiapi-pkey.pem
 server:
   port: 8080
 
