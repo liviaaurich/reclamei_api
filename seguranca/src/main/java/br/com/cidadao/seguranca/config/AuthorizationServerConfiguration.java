@@ -1,5 +1,6 @@
 package br.com.cidadao.seguranca.config;
 
+import br.com.cidadao.seguranca.config.custom.JwtCustomClaimsTokenEnhancer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,7 +48,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
         var enhancerChain = new TokenEnhancerChain();
         enhancerChain.setTokenEnhancers(Arrays.asList(new JwtCustomClaimsTokenEnhancer(), jwtAccessTokenConverter()));
 
@@ -60,12 +61,12 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+        var jwtAccessTokenConverter = new JwtAccessTokenConverter();
 
         // TODO: Definir propriedades no application properties
         var jksResource = new ClassPathResource("keys/reclameiapi.jks");
 
-        var keyStoreKeyFactory = new KeyStoreKeyFactory(jksResource, "reclameiU$194".toCharArray());
+        var keyStoreKeyFactory = new KeyStoreKeyFactory(jksResource, "123456".toCharArray());
         var keyPair = keyStoreKeyFactory.getKeyPair("reclameiapi");
 
         jwtAccessTokenConverter.setKeyPair(keyPair);

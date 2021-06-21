@@ -9,6 +9,21 @@
     </changeSet>
 
     <changeSet id="202106142222-2" author="liviaaurich">
+        <createTable tableName="permissao" remarks="Tabela responsável por armazenar os tipos de permissoes.">
+            <column name="id" type="BIGINT" remarks="Chave primária da tabela orgao">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(20)" remarks="Coluna que armazena o nome da permissao">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(70)" remarks="Coluna que armazena a descrição da permissao">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="permissao" constraintName="permissao_pk" columnNames="id"/>
+    </changeSet>
+
+    <changeSet id="202106142222-3" author="liviaaurich">
         <createTable tableName="usuario" remarks="Tabela responsável por armazenar os usuários.">
             <column name="id" type="BIGINT" remarks="Chave primária da tabela orgao">
                 <constraints nullable="false"/>
@@ -16,11 +31,39 @@
             <column name="username" type="VARCHAR(20)" remarks="Coluna que armazena o nome de usuário">
                 <constraints nullable="false"/>
             </column>
-            <column name="password" type="VARCHAR(20)" remarks="Coluna que armazena a senha do usuário">
+            <column name="email" type="VARCHAR(30)" remarks="Coluna que armazena o e-mail do usuário">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(200)" remarks="Coluna que armazena a senha do usuário">
+                <constraints nullable="false"/>
+            </column>
+            <column name="id_permissao" type="BIGINT" remarks="Coluna que referencia a tabela permissao.">
                 <constraints nullable="false"/>
             </column>
         </createTable>
         <addPrimaryKey tableName="usuario" constraintName="usuario_pk" columnNames="id"/>
+    </changeSet>
+
+    <changeSet id="202106142222-4" author="liviaaurich">
+        <addForeignKeyConstraint baseTableName="usuario" baseColumnNames="id_permissao"
+                                 constraintName="usuario_permissao_pk"
+                                 referencedTableName="permissao" referencedColumnNames="id"/>
+        
+        <insert tableName="permissao">
+            <column name="id" value="1"/>
+            <column name="nome" value="ROLE_ADMIN"/>
+            <column name="descricao" value="Permissão para administradores do sistema."/>
+        </insert>
+        <insert tableName="permissao">
+            <column name="id" value="2"/>
+            <column name="nome" value="ROLE_USUARIO_PESSOA"/>
+            <column name="descricao" value="Permissão para pessoas físicas do sistema."/>
+        </insert>
+        <insert tableName="permissao">
+            <column name="id" value="3"/>
+            <column name="nome" value="ROLE_USUARIO_EMPRESA"/>
+            <column name="descricao" value="Permissão para as empresas cadastradas no sistema."/>
+        </insert>
     </changeSet>
 
 </databaseChangeLog>
