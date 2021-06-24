@@ -25,10 +25,10 @@
             <column name="descricao" type="VARCHAR(511)" remarks="Coluna que armazena a descrição do orgao">
                 <constraints nullable="false"/>
             </column>
-            <column name="celular" type="VARCHAR(9)" remarks="Coluna que armazena o celular do orgao">
+            <column name="celular" type="VARCHAR(11)" remarks="Coluna que armazena o celular do orgao">
                 <constraints nullable="false"/>
             </column>
-            <column name="telefone_sac" type="VARCHAR(8)" remarks="Coluna que armazena o número de telefone do orgao">
+            <column name="telefone_sac" type="VARCHAR(10)" remarks="Coluna que armazena o número de telefone do orgao">
                 <constraints nullable="false"/>
             </column>
         </createTable>
