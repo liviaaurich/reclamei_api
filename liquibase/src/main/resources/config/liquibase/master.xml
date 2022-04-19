@@ -11,6 +11,4 @@
     <include file="config/liquibase/changelogs/202106092203_create_table_abrangencia.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelogs/202106142222_create_table_usuario.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelogs/202106231340_create_table_oauth_client_details.xml" relativeToChangelogFile="false"/>
-    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
