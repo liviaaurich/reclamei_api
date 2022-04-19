@@ -64,6 +64,7 @@
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
 	</dependencies>
+>>>>>>>>> Temporary merge branch 2
 
 	<build>
 		<plugins>
